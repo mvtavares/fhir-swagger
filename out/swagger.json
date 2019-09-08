@@ -1,0 +1,1047 @@
+{
+  "swagger": "2.0",
+  "definitions": {
+    "OperationDefinition": {
+      "description": "",
+      "type": "object",
+      "properties": {
+        "resourceType": {
+          "type": "string",
+          "minLength": 1
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "text": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string",
+              "minLength": 1
+            },
+            "div": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "status",
+            "div"
+          ]
+        },
+        "url": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "type": "string",
+          "minLength": 1
+        },
+        "date": {
+          "type": "string",
+          "minLength": 1
+        },
+        "publisher": {
+          "type": "string",
+          "minLength": 1
+        },
+        "contact": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "required": [
+              "name"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "telecom": {
+                "type": "array",
+                "uniqueItems": true,
+                "minItems": 1,
+                "items": {
+                  "required": [
+                    "system",
+                    "value"
+                  ],
+                  "properties": {
+                    "system": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "value": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "useContext": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "properties": {
+              "code": {
+                "type": "object",
+                "properties": {
+                  "system": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "code": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "display": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "system",
+                  "code",
+                  "display"
+                ]
+              },
+              "valueCodeableConcept": {
+                "type": "object",
+                "properties": {
+                  "coding": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "minItems": 1,
+                    "items": {
+                      "required": [
+                        "system",
+                        "code",
+                        "display"
+                      ],
+                      "properties": {
+                        "system": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "code": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "display": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "coding"
+                ]
+              }
+            }
+          }
+        },
+        "jurisdiction": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "properties": {
+              "coding": {
+                "type": "array",
+                "uniqueItems": true,
+                "minItems": 1,
+                "items": {
+                  "required": [
+                    "system",
+                    "code",
+                    "display"
+                  ],
+                  "properties": {
+                    "system": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "code": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "display": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "comment": {
+          "type": "string",
+          "minLength": 1
+        },
+        "base": {
+          "type": "string",
+          "minLength": 1
+        },
+        "resource": {
+          "type": "array",
+          "items": {
+            "properties": {}
+          }
+        },
+        "system": {
+          "type": "boolean"
+        },
+        "type": {
+          "type": "boolean"
+        },
+        "instance": {
+          "type": "boolean"
+        },
+        "parameter": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "required": [
+              "name",
+              "use",
+              "min",
+              "max",
+              "documentation",
+              "type"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "use": {
+                "type": "string",
+                "minLength": 1
+              },
+              "min": {
+                "type": "number"
+              },
+              "max": {
+                "type": "string",
+                "minLength": 1
+              },
+              "documentation": {
+                "type": "string",
+                "minLength": 1
+              },
+              "type": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "overload": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "required": [
+              "comment"
+            ],
+            "properties": {
+              "parameterName": {
+                "type": "array",
+                "items": {
+                  "properties": {}
+                }
+              },
+              "comment": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "resourceType",
+        "id",
+        "text",
+        "url",
+        "version",
+        "name",
+        "status",
+        "kind",
+        "date",
+        "publisher",
+        "contact",
+        "description",
+        "useContext",
+        "jurisdiction",
+        "code",
+        "comment",
+        "base",
+        "resource",
+        "system",
+        "type",
+        "instance",
+        "parameter",
+        "overload"
+      ]
+    },
+    "Patient": {
+      "description": "",
+      "type": "object",
+      "properties": {
+        "resourceType": {
+          "type": "string",
+          "minLength": 1
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "text": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string",
+              "minLength": 1
+            },
+            "div": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "status",
+            "div"
+          ]
+        },
+        "identifier": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "required": [
+              "use",
+              "system",
+              "value"
+            ],
+            "properties": {
+              "use": {
+                "type": "string",
+                "minLength": 1
+              },
+              "type": {
+                "type": "object",
+                "properties": {
+                  "coding": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "minItems": 1,
+                    "items": {
+                      "required": [
+                        "system",
+                        "code"
+                      ],
+                      "properties": {
+                        "system": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "code": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "coding"
+                ]
+              },
+              "system": {
+                "type": "string",
+                "minLength": 1
+              },
+              "value": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "required": [
+              "use",
+              "family"
+            ],
+            "properties": {
+              "use": {
+                "type": "string",
+                "minLength": 1
+              },
+              "family": {
+                "type": "string",
+                "minLength": 1
+              },
+              "given": {
+                "type": "array",
+                "items": {
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "gender": {
+          "type": "string",
+          "minLength": 1
+        },
+        "birthDate": {
+          "type": "string",
+          "minLength": 1
+        },
+        "deceasedBoolean": {
+          "type": "boolean"
+        },
+        "managingOrganization": {
+          "type": "object",
+          "properties": {
+            "reference": {
+              "type": "string",
+              "minLength": 1
+            },
+            "display": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "reference",
+            "display"
+          ]
+        },
+        "meta": {
+          "type": "object",
+          "properties": {
+            "tag": {
+              "type": "array",
+              "uniqueItems": true,
+              "minItems": 1,
+              "items": {
+                "required": [
+                  "system",
+                  "code",
+                  "display"
+                ],
+                "properties": {
+                  "system": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "code": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "display": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            }
+          },
+          "required": [
+            "tag"
+          ]
+        }
+      },
+      "required": [
+        "resourceType",
+        "id",
+        "text",
+        "identifier",
+        "active",
+        "name",
+        "gender",
+        "birthDate",
+        "deceasedBoolean",
+        "managingOrganization",
+        "meta"
+      ]
+    },
+    "StructureDefinition": {}
+  },
+  "paths": {
+    "/OperationDefinition": {},
+    "/OperationDefinition/{id}": {
+      "parameters": [
+        {
+          "in": "path",
+          "required": true,
+          "name": "id",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "OperationDefinition"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/OperationDefinition"
+            }
+          }
+        }
+      }
+    },
+    "/Patient": {
+      "post": {
+        "tags": [
+          "Patient"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/Patient"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Patient"
+        ],
+        "parameters": [
+          {
+            "name": "_language",
+            "type": "string",
+            "in": "query",
+            "description": "The language of the resource"
+          },
+          {
+            "name": "birthdate",
+            "type": "string",
+            "in": "query",
+            "description": "The patient's date of birth",
+            "format": "date"
+          },
+          {
+            "name": "deceased",
+            "type": "string",
+            "in": "query",
+            "description": "This patient has been marked as deceased, or as a death date entered"
+          },
+          {
+            "name": "address-state",
+            "type": "string",
+            "in": "query",
+            "description": "A state specified in an address"
+          },
+          {
+            "name": "gender",
+            "type": "string",
+            "in": "query",
+            "description": "Gender of the patient"
+          },
+          {
+            "name": "link",
+            "type": "string",
+            "in": "query",
+            "description": "All patients linked to the given patient"
+          },
+          {
+            "name": "language",
+            "type": "string",
+            "in": "query",
+            "description": "Language code (irrespective of use value)"
+          },
+          {
+            "name": "address-country",
+            "type": "string",
+            "in": "query",
+            "description": "A country specified in an address"
+          },
+          {
+            "name": "death-date",
+            "type": "string",
+            "in": "query",
+            "description": "The date of death has been provided and satisfies this search value",
+            "format": "date"
+          },
+          {
+            "name": "phonetic",
+            "type": "string",
+            "in": "query",
+            "description": "A portion of either family or given name using some kind of phonetic matching algorithm"
+          },
+          {
+            "name": "telecom",
+            "type": "string",
+            "in": "query",
+            "description": "The value in any kind of telecom details of the patient"
+          },
+          {
+            "name": "address-city",
+            "type": "string",
+            "in": "query",
+            "description": "A city specified in an address"
+          },
+          {
+            "name": "email",
+            "type": "string",
+            "in": "query",
+            "description": "A value in an email contact"
+          },
+          {
+            "name": "given",
+            "type": "string",
+            "in": "query",
+            "description": "A portion of the given name of the patient"
+          },
+          {
+            "name": "identifier",
+            "type": "string",
+            "in": "query",
+            "description": "A patient identifier"
+          },
+          {
+            "name": "address",
+            "type": "string",
+            "in": "query",
+            "description": "A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text"
+          },
+          {
+            "name": "general-practitioner",
+            "type": "string",
+            "in": "query",
+            "description": "Patient's nominated general practitioner, not the organization that manages the record"
+          },
+          {
+            "name": "active",
+            "type": "string",
+            "in": "query",
+            "description": "Whether the patient record is active"
+          },
+          {
+            "name": "address-postalcode",
+            "type": "string",
+            "in": "query",
+            "description": "A postalCode specified in an address"
+          },
+          {
+            "name": "phone",
+            "type": "string",
+            "in": "query",
+            "description": "A value in a phone contact"
+          },
+          {
+            "name": "organization",
+            "type": "string",
+            "in": "query",
+            "description": "The organization that is the custodian of the patient record"
+          },
+          {
+            "name": "address-use",
+            "type": "string",
+            "in": "query",
+            "description": "A use code specified in an address"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "in": "query",
+            "description": "A server defined search that may match any of the string fields in the HumanName, including family, give, prefix, suffix, suffix, and/or text"
+          },
+          {
+            "name": "_id",
+            "type": "string",
+            "in": "query",
+            "description": "The ID of the resource"
+          },
+          {
+            "name": "family",
+            "type": "string",
+            "in": "query",
+            "description": "A portion of the family name of the patient"
+          },
+          {
+            "name": "_format",
+            "in": "query",
+            "type": "string",
+            "x-consoleDefault": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Patient"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Patient/{id}": {
+      "parameters": [
+        {
+          "in": "path",
+          "required": true,
+          "name": "id",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Patient"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Patient"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Patient"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/Patient"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/Patient/{id}/_history/{vid}": {
+      "get": {
+        "tags": [
+          "Patient"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "vid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/Patient"
+            }
+          }
+        }
+      }
+    },
+    "/StructureDefinition": {
+      "get": {
+        "tags": [
+          "StructureDefinition"
+        ],
+        "parameters": [
+          {
+            "name": "_language",
+            "type": "string",
+            "in": "query",
+            "description": "The language of the resource"
+          },
+          {
+            "name": "date",
+            "type": "string",
+            "in": "query",
+            "description": "The structure definition publication date",
+            "format": "date"
+          },
+          {
+            "name": "context-type-value",
+            "type": "string",
+            "in": "query",
+            "description": "A use context type and value assigned to the structure definition"
+          },
+          {
+            "name": "jurisdiction",
+            "type": "string",
+            "in": "query",
+            "description": "Intended jurisdiction for the structure definition"
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "in": "query",
+            "description": "The description of the structure definition"
+          },
+          {
+            "name": "context-type",
+            "type": "string",
+            "in": "query",
+            "description": "A type of use context assigned to the structure definition"
+          },
+          {
+            "name": "experimental",
+            "type": "string",
+            "in": "query",
+            "description": "For testing purposes, not real usage"
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "in": "query",
+            "description": "The human-friendly name of the structure definition"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "in": "query",
+            "description": "Type defined or constrained by this structure"
+          },
+          {
+            "name": "context-quantity",
+            "type": "integer",
+            "in": "query",
+            "description": "A quantity- or range-valued use context assigned to the structure definition"
+          },
+          {
+            "name": "path",
+            "type": "string",
+            "in": "query",
+            "description": "A path that is constrained in the StructureDefinition"
+          },
+          {
+            "name": "base-path",
+            "type": "string",
+            "in": "query",
+            "description": "Path that identifies the base element"
+          },
+          {
+            "name": "context",
+            "type": "string",
+            "in": "query",
+            "description": "A use context assigned to the structure definition"
+          },
+          {
+            "name": "keyword",
+            "type": "string",
+            "in": "query",
+            "description": "A code for the StructureDefinition"
+          },
+          {
+            "name": "context-type-quantity",
+            "type": "string",
+            "in": "query",
+            "description": "A use context type and quantity- or range-based value assigned to the structure definition"
+          },
+          {
+            "name": "identifier",
+            "type": "string",
+            "in": "query",
+            "description": "External identifier for the structure definition"
+          },
+          {
+            "name": "valueset",
+            "type": "string",
+            "in": "query",
+            "description": "A vocabulary binding reference"
+          },
+          {
+            "name": "kind",
+            "type": "string",
+            "in": "query",
+            "description": "primitive-type | complex-type | resource | logical"
+          },
+          {
+            "name": "abstract",
+            "type": "string",
+            "in": "query",
+            "description": "Whether the structure is abstract"
+          },
+          {
+            "name": "version",
+            "type": "string",
+            "in": "query",
+            "description": "The business version of the structure definition"
+          },
+          {
+            "name": "url",
+            "type": "string",
+            "in": "query",
+            "description": "The uri that identifies the structure definition"
+          },
+          {
+            "name": "ext-context",
+            "type": "string",
+            "in": "query",
+            "description": "The system is the URL for the context-type: e.g. http://hl7.org/fhir/extension-context-type#element|CodeableConcept.text"
+          },
+          {
+            "name": "name",
+            "type": "string",
+            "in": "query",
+            "description": "Computationally friendly name of the structure definition"
+          },
+          {
+            "name": "publisher",
+            "type": "string",
+            "in": "query",
+            "description": "Name of the publisher of the structure definition"
+          },
+          {
+            "name": "derivation",
+            "type": "string",
+            "in": "query",
+            "description": "specialization | constraint - How relates to base definition"
+          },
+          {
+            "name": "_id",
+            "type": "string",
+            "in": "query",
+            "description": "The ID of the resource"
+          },
+          {
+            "name": "base",
+            "type": "string",
+            "in": "query",
+            "description": "Definition that this type is constrained/specialized from"
+          },
+          {
+            "name": "status",
+            "type": "string",
+            "in": "query",
+            "description": "The current status of the structure definition"
+          },
+          {
+            "name": "_format",
+            "in": "query",
+            "type": "string",
+            "x-consoleDefault": "application/json"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/StructureDefinition"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/StructureDefinition/{id}": {
+      "parameters": [
+        {
+          "in": "path",
+          "required": true,
+          "name": "id",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "StructureDefinition"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/StructureDefinition"
+            }
+          }
+        }
+      }
+    }
+  },
+  "info": {
+    "description": "Informações demográficas e clínicas sobre pacientes, documentos, organizações e profissionais de saúde.\n\n",
+    "title": "HAPI FHIR R4 Server",
+    "version": "4.0.0"
+  },
+  "host": "localhost:8080",
+  "schemes": [
+    "http"
+  ],
+  "basePath": "/hapi-fhir-jpaserver",
+  "tags": [
+    {
+      "name": "OperationDefinition"
+    },
+    {
+      "name": "Patient"
+    },
+    {
+      "name": "StructureDefinition"
+    }
+  ]
+}

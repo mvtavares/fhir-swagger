@@ -31,6 +31,7 @@
     }
   ],
   "gender": "male",
+  "birthDate": "2000-01-01",
   "photo": [
     {
       "contentType": "image/gif",
