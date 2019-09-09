@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "definitions": {
-    "OperationDefinition": {
+    "DocumentReference": {
       "description": "",
       "type": "object",
       "properties": {
@@ -30,64 +30,42 @@
             "div"
           ]
         },
-        "url": {
-          "type": "string",
-          "minLength": 1
-        },
-        "version": {
-          "type": "string",
-          "minLength": 1
-        },
-        "name": {
-          "type": "string",
-          "minLength": 1
-        },
-        "status": {
-          "type": "string",
-          "minLength": 1
-        },
-        "kind": {
-          "type": "string",
-          "minLength": 1
-        },
-        "date": {
-          "type": "string",
-          "minLength": 1
-        },
-        "publisher": {
-          "type": "string",
-          "minLength": 1
-        },
-        "contact": {
+        "contained": {
           "type": "array",
           "uniqueItems": true,
           "minItems": 1,
           "items": {
             "required": [
-              "name"
+              "resourceType",
+              "id"
             ],
             "properties": {
-              "name": {
+              "resourceType": {
                 "type": "string",
                 "minLength": 1
               },
-              "telecom": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "name": {
                 "type": "array",
                 "uniqueItems": true,
                 "minItems": 1,
                 "items": {
                   "required": [
-                    "system",
-                    "value"
+                    "family"
                   ],
                   "properties": {
-                    "system": {
+                    "family": {
                       "type": "string",
                       "minLength": 1
                     },
-                    "value": {
-                      "type": "string",
-                      "minLength": 1
+                    "given": {
+                      "type": "array",
+                      "items": {
+                        "properties": {}
+                      }
                     }
                   }
                 }
@@ -95,18 +73,65 @@
             }
           }
         },
-        "description": {
-          "type": "string",
-          "minLength": 1
+        "masterIdentifier": {
+          "type": "object",
+          "properties": {
+            "system": {
+              "type": "string",
+              "minLength": 1
+            },
+            "value": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "system",
+            "value"
+          ]
         },
-        "useContext": {
+        "identifier": {
           "type": "array",
           "uniqueItems": true,
           "minItems": 1,
           "items": {
+            "required": [
+              "system",
+              "value"
+            ],
             "properties": {
-              "code": {
-                "type": "object",
+              "system": {
+                "type": "string",
+                "minLength": 1
+              },
+              "value": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "status": {
+          "type": "string",
+          "minLength": 1
+        },
+        "docStatus": {
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "type": "object",
+          "properties": {
+            "coding": {
+              "type": "array",
+              "uniqueItems": true,
+              "minItems": 1,
+              "items": {
+                "required": [
+                  "system",
+                  "code",
+                  "display"
+                ],
                 "properties": {
                   "system": {
                     "type": "string",
@@ -120,51 +145,15 @@
                     "type": "string",
                     "minLength": 1
                   }
-                },
-                "required": [
-                  "system",
-                  "code",
-                  "display"
-                ]
-              },
-              "valueCodeableConcept": {
-                "type": "object",
-                "properties": {
-                  "coding": {
-                    "type": "array",
-                    "uniqueItems": true,
-                    "minItems": 1,
-                    "items": {
-                      "required": [
-                        "system",
-                        "code",
-                        "display"
-                      ],
-                      "properties": {
-                        "system": {
-                          "type": "string",
-                          "minLength": 1
-                        },
-                        "code": {
-                          "type": "string",
-                          "minLength": 1
-                        },
-                        "display": {
-                          "type": "string",
-                          "minLength": 1
-                        }
-                      }
-                    }
-                  }
-                },
-                "required": [
-                  "coding"
-                ]
+                }
               }
             }
-          }
+          },
+          "required": [
+            "coding"
+          ]
         },
-        "jurisdiction": {
+        "category": {
           "type": "array",
           "uniqueItems": true,
           "minItems": 1,
@@ -199,122 +188,456 @@
             }
           }
         },
-        "code": {
+        "subject": {
+          "type": "object",
+          "properties": {
+            "reference": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "reference"
+          ]
+        },
+        "date": {
           "type": "string",
           "minLength": 1
         },
-        "comment": {
-          "type": "string",
-          "minLength": 1
-        },
-        "base": {
-          "type": "string",
-          "minLength": 1
-        },
-        "resource": {
-          "type": "array",
-          "items": {
-            "properties": {}
-          }
-        },
-        "system": {
-          "type": "boolean"
-        },
-        "type": {
-          "type": "boolean"
-        },
-        "instance": {
-          "type": "boolean"
-        },
-        "parameter": {
+        "author": {
           "type": "array",
           "uniqueItems": true,
           "minItems": 1,
           "items": {
             "required": [
-              "name",
-              "use",
-              "min",
-              "max",
-              "documentation",
-              "type"
+              "reference"
             ],
             "properties": {
-              "name": {
-                "type": "string",
-                "minLength": 1
-              },
-              "use": {
-                "type": "string",
-                "minLength": 1
-              },
-              "min": {
-                "type": "number"
-              },
-              "max": {
-                "type": "string",
-                "minLength": 1
-              },
-              "documentation": {
-                "type": "string",
-                "minLength": 1
-              },
-              "type": {
+              "reference": {
                 "type": "string",
                 "minLength": 1
               }
             }
           }
         },
-        "overload": {
+        "authenticator": {
+          "type": "object",
+          "properties": {
+            "reference": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "reference"
+          ]
+        },
+        "custodian": {
+          "type": "object",
+          "properties": {
+            "reference": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "reference"
+          ]
+        },
+        "relatesTo": {
           "type": "array",
           "uniqueItems": true,
           "minItems": 1,
           "items": {
             "required": [
-              "comment"
+              "code"
             ],
             "properties": {
-              "parameterName": {
+              "code": {
+                "type": "string",
+                "minLength": 1
+              },
+              "target": {
+                "type": "object",
+                "properties": {
+                  "reference": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "reference"
+                ]
+              }
+            }
+          }
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "securityLabel": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "properties": {
+              "coding": {
                 "type": "array",
+                "uniqueItems": true,
+                "minItems": 1,
                 "items": {
-                  "properties": {}
+                  "required": [
+                    "system",
+                    "code",
+                    "display"
+                  ],
+                  "properties": {
+                    "system": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "code": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "display": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "content": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "properties": {
+              "attachment": {
+                "type": "object",
+                "properties": {
+                  "contentType": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "language": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "size": {
+                    "type": "number"
+                  },
+                  "hash": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "title": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "creation": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "contentType",
+                  "language",
+                  "url",
+                  "size",
+                  "hash",
+                  "title",
+                  "creation"
+                ]
+              },
+              "format": {
+                "type": "object",
+                "properties": {
+                  "system": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "code": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "display": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "system",
+                  "code",
+                  "display"
+                ]
+              }
+            }
+          }
+        },
+        "context": {
+          "type": "object",
+          "properties": {
+            "encounter": {
+              "type": "array",
+              "uniqueItems": true,
+              "minItems": 1,
+              "items": {
+                "required": [
+                  "reference"
+                ],
+                "properties": {
+                  "reference": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            },
+            "event": {
+              "type": "array",
+              "uniqueItems": true,
+              "minItems": 1,
+              "items": {
+                "properties": {
+                  "coding": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "minItems": 1,
+                    "items": {
+                      "required": [
+                        "system",
+                        "code",
+                        "display"
+                      ],
+                      "properties": {
+                        "system": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "code": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "display": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "period": {
+              "type": "object",
+              "properties": {
+                "start": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "end": {
+                  "type": "string",
+                  "minLength": 1
                 }
               },
-              "comment": {
-                "type": "string",
-                "minLength": 1
+              "required": [
+                "start",
+                "end"
+              ]
+            },
+            "facilityType": {
+              "type": "object",
+              "properties": {
+                "coding": {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "minItems": 1,
+                  "items": {
+                    "required": [
+                      "system",
+                      "code",
+                      "display"
+                    ],
+                    "properties": {
+                      "system": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "code": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "display": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  }
+                }
+              },
+              "required": [
+                "coding"
+              ]
+            },
+            "practiceSetting": {
+              "type": "object",
+              "properties": {
+                "coding": {
+                  "type": "array",
+                  "uniqueItems": true,
+                  "minItems": 1,
+                  "items": {
+                    "required": [
+                      "system",
+                      "code",
+                      "display"
+                    ],
+                    "properties": {
+                      "system": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "code": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "display": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  }
+                }
+              },
+              "required": [
+                "coding"
+              ]
+            },
+            "sourcePatientInfo": {
+              "type": "object",
+              "properties": {
+                "reference": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "reference"
+              ]
+            },
+            "related": {
+              "type": "array",
+              "uniqueItems": true,
+              "minItems": 1,
+              "items": {
+                "required": [
+                  "reference"
+                ],
+                "properties": {
+                  "reference": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "identifier": {
+                    "type": "object",
+                    "properties": {
+                      "system": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "value": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": [
+                      "system",
+                      "value"
+                    ]
+                  }
+                }
               }
             }
-          }
+          },
+          "required": [
+            "encounter",
+            "event",
+            "period",
+            "facilityType",
+            "practiceSetting",
+            "sourcePatientInfo",
+            "related"
+          ]
+        },
+        "meta": {
+          "type": "object",
+          "properties": {
+            "tag": {
+              "type": "array",
+              "uniqueItems": true,
+              "minItems": 1,
+              "items": {
+                "required": [
+                  "system",
+                  "code",
+                  "display"
+                ],
+                "properties": {
+                  "system": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "code": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "display": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            }
+          },
+          "required": [
+            "tag"
+          ]
         }
       },
       "required": [
         "resourceType",
         "id",
         "text",
-        "url",
-        "version",
-        "name",
+        "contained",
+        "masterIdentifier",
+        "identifier",
         "status",
-        "kind",
-        "date",
-        "publisher",
-        "contact",
-        "description",
-        "useContext",
-        "jurisdiction",
-        "code",
-        "comment",
-        "base",
-        "resource",
-        "system",
+        "docStatus",
         "type",
-        "instance",
-        "parameter",
-        "overload"
+        "category",
+        "subject",
+        "date",
+        "author",
+        "authenticator",
+        "custodian",
+        "relatesTo",
+        "description",
+        "securityLabel",
+        "content",
+        "context",
+        "meta"
       ]
     },
+    "OperationDefinition": {},
     "Patient": {
       "description": "",
       "type": "object",
@@ -509,8 +832,224 @@
     "StructureDefinition": {}
   },
   "paths": {
-    "/OperationDefinition": {},
-    "/OperationDefinition/{id}": {
+    "/DocumentReference": {
+      "post": {
+        "tags": [
+          "DocumentReference"
+        ],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "$ref": "#/definitions/DocumentReference"
+            }
+          }
+        ],
+        "description": "Insere um novo DocumentReference",
+        "responses": {
+          "201": {
+            "description": "DocumentReference criado com sucesso."
+          },
+          "500": {
+            "description": "Erro inesperado na operação."
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "DocumentReference"
+        ],
+        "parameters": [
+          {
+            "name": "_language",
+            "type": "string",
+            "in": "query",
+            "description": "The language of the resource"
+          },
+          {
+            "name": "date",
+            "type": "string",
+            "in": "query",
+            "description": "When this document reference was created",
+            "format": "date"
+          },
+          {
+            "name": "subject",
+            "type": "string",
+            "in": "query",
+            "description": "Who/what is the subject of the document"
+          },
+          {
+            "name": "description",
+            "type": "string",
+            "in": "query",
+            "description": "Human-readable description"
+          },
+          {
+            "name": "language",
+            "type": "string",
+            "in": "query",
+            "description": "Human language of the content (BCP-47)"
+          },
+          {
+            "name": "type",
+            "type": "string",
+            "in": "query",
+            "description": "Kind of document (LOINC if possible)"
+          },
+          {
+            "name": "relation",
+            "type": "string",
+            "in": "query",
+            "description": "replaces | transforms | signs | appends"
+          },
+          {
+            "name": "setting",
+            "type": "string",
+            "in": "query",
+            "description": "Additional details about where the content was created (e.g. clinical specialty)"
+          },
+          {
+            "name": "related",
+            "type": "string",
+            "in": "query",
+            "description": "Related identifiers or resources"
+          },
+          {
+            "name": "patient",
+            "type": "string",
+            "in": "query",
+            "description": "Who/what is the subject of the document"
+          },
+          {
+            "name": "event",
+            "type": "string",
+            "in": "query",
+            "description": "Main clinical acts documented"
+          },
+          {
+            "name": "relationship",
+            "type": "string",
+            "in": "query",
+            "description": "Combination of relation and relatesTo"
+          },
+          {
+            "name": "authenticator",
+            "type": "string",
+            "in": "query",
+            "description": "Who/what authenticated the document"
+          },
+          {
+            "name": "identifier",
+            "type": "string",
+            "in": "query",
+            "description": "Master Version Specific Identifier"
+          },
+          {
+            "name": "period",
+            "type": "string",
+            "in": "query",
+            "description": "Time of service that is being documented",
+            "format": "date"
+          },
+          {
+            "name": "custodian",
+            "type": "string",
+            "in": "query",
+            "description": "Organization which maintains the document"
+          },
+          {
+            "name": "author",
+            "type": "string",
+            "in": "query",
+            "description": "Who and/or what authored the document"
+          },
+          {
+            "name": "format",
+            "type": "string",
+            "in": "query",
+            "description": "Format/content rules for the document"
+          },
+          {
+            "name": "encounter",
+            "type": "string",
+            "in": "query",
+            "description": "Context of the document  content"
+          },
+          {
+            "name": "contenttype",
+            "type": "string",
+            "in": "query",
+            "description": "Mime type of the content, with charset etc."
+          },
+          {
+            "name": "security-label",
+            "type": "string",
+            "in": "query",
+            "description": "Document security-tags"
+          },
+          {
+            "name": "location",
+            "type": "string",
+            "in": "query",
+            "description": "Uri where the data can be found"
+          },
+          {
+            "name": "_id",
+            "type": "string",
+            "in": "query",
+            "description": "The ID of the resource"
+          },
+          {
+            "name": "category",
+            "type": "string",
+            "in": "query",
+            "description": "Categorization of document"
+          },
+          {
+            "name": "relatesto",
+            "type": "string",
+            "in": "query",
+            "description": "Target of the relationship"
+          },
+          {
+            "name": "facility",
+            "type": "string",
+            "in": "query",
+            "description": "Kind of facility where patient was seen"
+          },
+          {
+            "name": "status",
+            "type": "string",
+            "in": "query",
+            "description": "current | superseded | entered-in-error"
+          },
+          {
+            "name": "_format",
+            "in": "query",
+            "type": "string",
+            "x-consoleDefault": "application/json"
+          }
+        ],
+        "description": "Pesquisa os dados de um DocumentReference conforme os parâmetros de pesquisa.",
+        "responses": {
+          "200": {
+            "description": "Retorna os dados de um DocumentReference conforme os parâmetros de pesquisa.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/DocumentReference"
+              }
+            }
+          },
+          "404": {
+            "description": "Nenhum DocumentReferenceencontrado."
+          }
+        }
+      }
+    },
+    "/DocumentReference/{id}": {
       "parameters": [
         {
           "in": "path",
@@ -521,14 +1060,139 @@
       ],
       "get": {
         "tags": [
-          "OperationDefinition"
+          "DocumentReference"
         ],
         "parameters": [],
+        "description": "Recupera os dados de um DocumentReference a partir do identificador.",
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "Retorna os dados de um DocumentReference a partir do identificador.",
             "schema": {
-              "$ref": "#/definitions/OperationDefinition"
+              "$ref": "#/definitions/DocumentReference"
+            }
+          },
+          "404": {
+            "description": "Nenhum DocumentReference encontrado."
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "DocumentReference"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/DocumentReference"
+            }
+          }
+        ],
+        "description": "Atualiza os dados de um DocumentReference",
+        "responses": {
+          "204": {
+            "description": "DocumentReference alterado com sucesso."
+          },
+          "500": {
+            "description": "Erro inesperado na operação."
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "DocumentReference"
+        ],
+        "parameters": [],
+        "description": "TODOdelete",
+        "responses": {
+          "200": {
+            "description": "Operação realizada com sucesso."
+          }
+        }
+      }
+    },
+    "/DocumentReference/{id}/_history": {
+      "get": {
+        "tags": [
+          "DocumentReference"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "_count",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_since",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "description": "TODOhistory-instance",
+        "responses": {
+          "200": {
+            "description": "Operação realizada com sucesso."
+          }
+        }
+      }
+    },
+    "/DocumentReference/_history": {
+      "get": {
+        "tags": [
+          "DocumentReference"
+        ],
+        "parameters": [
+          {
+            "name": "_count",
+            "in": "query",
+            "type": "string"
+          },
+          {
+            "name": "_since",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "description": "TODOhistory-type",
+        "responses": {
+          "200": {
+            "description": "Operação realizada com sucesso."
+          }
+        }
+      }
+    },
+    "/DocumentReference/{id}/_history/{vid}": {
+      "get": {
+        "tags": [
+          "DocumentReference"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "vid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "description": "TODOundefined",
+        "responses": {
+          "200": {
+            "description": "Operação realizada com sucesso.",
+            "schema": {
+              "$ref": "#/definitions/DocumentReference"
             }
           }
         }
@@ -548,9 +1212,13 @@
             }
           }
         ],
+        "description": "Insere um novo Patient",
         "responses": {
-          "200": {
-            "description": "Success"
+          "201": {
+            "description": "Patient criado com sucesso."
+          },
+          "500": {
+            "description": "Erro inesperado na operação."
           }
         }
       },
@@ -718,15 +1386,19 @@
             "x-consoleDefault": "application/json"
           }
         ],
+        "description": "Pesquisa os dados de um Patient conforme os parâmetros de pesquisa.",
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "Retorna os dados de um Patient conforme os parâmetros de pesquisa.",
             "schema": {
               "type": "array",
               "items": {
                 "$ref": "#/definitions/Patient"
               }
             }
+          },
+          "404": {
+            "description": "Nenhum Patientencontrado."
           }
         }
       }
@@ -745,12 +1417,16 @@
           "Patient"
         ],
         "parameters": [],
+        "description": "Recupera os dados de um Patient a partir do identificador.",
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "Retorna os dados de um Patient a partir do identificador.",
             "schema": {
               "$ref": "#/definitions/Patient"
             }
+          },
+          "404": {
+            "description": "Nenhum Patient encontrado."
           }
         }
       },
@@ -767,9 +1443,13 @@
             }
           }
         ],
+        "description": "Atualiza os dados de um Patient",
         "responses": {
-          "200": {
-            "description": "Success"
+          "204": {
+            "description": "Patient alterado com sucesso."
+          },
+          "500": {
+            "description": "Erro inesperado na operação."
           }
         }
       }
@@ -793,230 +1473,12 @@
             "type": "string"
           }
         ],
+        "description": "TODOundefined",
         "responses": {
           "200": {
-            "description": "Success",
+            "description": "Operação realizada com sucesso.",
             "schema": {
               "$ref": "#/definitions/Patient"
-            }
-          }
-        }
-      }
-    },
-    "/StructureDefinition": {
-      "get": {
-        "tags": [
-          "StructureDefinition"
-        ],
-        "parameters": [
-          {
-            "name": "_language",
-            "type": "string",
-            "in": "query",
-            "description": "The language of the resource"
-          },
-          {
-            "name": "date",
-            "type": "string",
-            "in": "query",
-            "description": "The structure definition publication date",
-            "format": "date"
-          },
-          {
-            "name": "context-type-value",
-            "type": "string",
-            "in": "query",
-            "description": "A use context type and value assigned to the structure definition"
-          },
-          {
-            "name": "jurisdiction",
-            "type": "string",
-            "in": "query",
-            "description": "Intended jurisdiction for the structure definition"
-          },
-          {
-            "name": "description",
-            "type": "string",
-            "in": "query",
-            "description": "The description of the structure definition"
-          },
-          {
-            "name": "context-type",
-            "type": "string",
-            "in": "query",
-            "description": "A type of use context assigned to the structure definition"
-          },
-          {
-            "name": "experimental",
-            "type": "string",
-            "in": "query",
-            "description": "For testing purposes, not real usage"
-          },
-          {
-            "name": "title",
-            "type": "string",
-            "in": "query",
-            "description": "The human-friendly name of the structure definition"
-          },
-          {
-            "name": "type",
-            "type": "string",
-            "in": "query",
-            "description": "Type defined or constrained by this structure"
-          },
-          {
-            "name": "context-quantity",
-            "type": "integer",
-            "in": "query",
-            "description": "A quantity- or range-valued use context assigned to the structure definition"
-          },
-          {
-            "name": "path",
-            "type": "string",
-            "in": "query",
-            "description": "A path that is constrained in the StructureDefinition"
-          },
-          {
-            "name": "base-path",
-            "type": "string",
-            "in": "query",
-            "description": "Path that identifies the base element"
-          },
-          {
-            "name": "context",
-            "type": "string",
-            "in": "query",
-            "description": "A use context assigned to the structure definition"
-          },
-          {
-            "name": "keyword",
-            "type": "string",
-            "in": "query",
-            "description": "A code for the StructureDefinition"
-          },
-          {
-            "name": "context-type-quantity",
-            "type": "string",
-            "in": "query",
-            "description": "A use context type and quantity- or range-based value assigned to the structure definition"
-          },
-          {
-            "name": "identifier",
-            "type": "string",
-            "in": "query",
-            "description": "External identifier for the structure definition"
-          },
-          {
-            "name": "valueset",
-            "type": "string",
-            "in": "query",
-            "description": "A vocabulary binding reference"
-          },
-          {
-            "name": "kind",
-            "type": "string",
-            "in": "query",
-            "description": "primitive-type | complex-type | resource | logical"
-          },
-          {
-            "name": "abstract",
-            "type": "string",
-            "in": "query",
-            "description": "Whether the structure is abstract"
-          },
-          {
-            "name": "version",
-            "type": "string",
-            "in": "query",
-            "description": "The business version of the structure definition"
-          },
-          {
-            "name": "url",
-            "type": "string",
-            "in": "query",
-            "description": "The uri that identifies the structure definition"
-          },
-          {
-            "name": "ext-context",
-            "type": "string",
-            "in": "query",
-            "description": "The system is the URL for the context-type: e.g. http://hl7.org/fhir/extension-context-type#element|CodeableConcept.text"
-          },
-          {
-            "name": "name",
-            "type": "string",
-            "in": "query",
-            "description": "Computationally friendly name of the structure definition"
-          },
-          {
-            "name": "publisher",
-            "type": "string",
-            "in": "query",
-            "description": "Name of the publisher of the structure definition"
-          },
-          {
-            "name": "derivation",
-            "type": "string",
-            "in": "query",
-            "description": "specialization | constraint - How relates to base definition"
-          },
-          {
-            "name": "_id",
-            "type": "string",
-            "in": "query",
-            "description": "The ID of the resource"
-          },
-          {
-            "name": "base",
-            "type": "string",
-            "in": "query",
-            "description": "Definition that this type is constrained/specialized from"
-          },
-          {
-            "name": "status",
-            "type": "string",
-            "in": "query",
-            "description": "The current status of the structure definition"
-          },
-          {
-            "name": "_format",
-            "in": "query",
-            "type": "string",
-            "x-consoleDefault": "application/json"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "type": "array",
-              "items": {
-                "$ref": "#/definitions/StructureDefinition"
-              }
-            }
-          }
-        }
-      }
-    },
-    "/StructureDefinition/{id}": {
-      "parameters": [
-        {
-          "in": "path",
-          "required": true,
-          "name": "id",
-          "type": "string"
-        }
-      ],
-      "get": {
-        "tags": [
-          "StructureDefinition"
-        ],
-        "parameters": [],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "schema": {
-              "$ref": "#/definitions/StructureDefinition"
             }
           }
         }
@@ -1033,15 +1495,5 @@
     "http"
   ],
   "basePath": "/hapi-fhir-jpaserver",
-  "tags": [
-    {
-      "name": "OperationDefinition"
-    },
-    {
-      "name": "Patient"
-    },
-    {
-      "name": "StructureDefinition"
-    }
-  ]
+  "tags": []
 }
