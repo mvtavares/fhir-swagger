@@ -30,9 +30,32 @@
       ]
     }
   ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "(03) 5555 6473",
+      "use": "work"
+    },
+    {
+      "system": "email",
+      "value": "adam.southern@example.org",
+      "use": "work"
+    }
+  ],
   "gender": "female",
   "birthDate": "1982-08-02",
   "deceasedBoolean": true,
+  "address": [
+    {
+      "use": "home",
+      "line": [
+        "534 Erewhon St"
+      ],
+      "city": "PleasantVille",
+      "state": "Vic",
+      "postalCode": "3999"
+    }
+  ],
   "managingOrganization": {
     "reference": "Organization/1",
     "display": "ACME Healthcare, Inc"

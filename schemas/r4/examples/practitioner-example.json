@@ -23,6 +23,18 @@
       ]
     }
   ],
+  "telecom": [
+    {
+      "system": "phone",
+      "value": "(03) 5555 6473",
+      "use": "work"
+    },
+    {
+      "system": "email",
+      "value": "adam.southern@example.org",
+      "use": "work"
+    }
+  ],
   "address": [
     {
       "use": "home",
@@ -34,6 +46,8 @@
       "postalCode": "3999"
     }
   ],
+  "gender": "female",
+  "birthDate": "1982-08-02",
   "qualification": [
     {
       "identifier": [
@@ -58,6 +72,20 @@
       "issuer": {
         "display": "Example University"
       }
+    }
+  ],
+  "communication": [
+    {
+      "language": {
+        "coding": [
+          {
+            "system": "urn:ietf:bcp:47",
+            "code": "nl-NL",
+            "display": "Dutch"
+          }
+        ]
+      },
+      "preferred": true
     }
   ],
   "meta": {

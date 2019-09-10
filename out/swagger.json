@@ -637,7 +637,166 @@
         "meta"
       ]
     },
-    "OperationDefinition": {},
+    "Organization": {
+      "description": "",
+      "type": "object",
+      "properties": {
+        "resourceType": {
+          "type": "string",
+          "minLength": 1
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "text": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string",
+              "minLength": 1
+            },
+            "div": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "status",
+            "div"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "properties": {}
+          }
+        },
+        "telecom": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "required": [
+              "system",
+              "value"
+            ],
+            "properties": {
+              "system": {
+                "type": "string",
+                "minLength": 1
+              },
+              "value": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "address": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "required": [
+              "city",
+              "state",
+              "postalCode",
+              "country"
+            ],
+            "properties": {
+              "line": {
+                "type": "array",
+                "items": {
+                  "properties": {}
+                }
+              },
+              "city": {
+                "type": "string",
+                "minLength": 1
+              },
+              "state": {
+                "type": "string",
+                "minLength": 1
+              },
+              "postalCode": {
+                "type": "string",
+                "minLength": 1
+              },
+              "country": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "endpoint": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "required": [
+              "reference"
+            ],
+            "properties": {
+              "reference": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "meta": {
+          "type": "object",
+          "properties": {
+            "tag": {
+              "type": "array",
+              "uniqueItems": true,
+              "minItems": 1,
+              "items": {
+                "required": [
+                  "system",
+                  "code",
+                  "display"
+                ],
+                "properties": {
+                  "system": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "code": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "display": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            }
+          },
+          "required": [
+            "tag"
+          ]
+        }
+      },
+      "required": [
+        "resourceType",
+        "id",
+        "text",
+        "name",
+        "alias",
+        "telecom",
+        "address",
+        "endpoint",
+        "meta"
+      ]
+    },
     "Patient": {
       "description": "",
       "type": "object",
@@ -829,7 +988,627 @@
         "meta"
       ]
     },
-    "StructureDefinition": {}
+    "Practitioner": {
+      "description": "",
+      "type": "object",
+      "properties": {
+        "resourceType": {
+          "type": "string",
+          "minLength": 1
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "text": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string",
+              "minLength": 1
+            },
+            "div": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "status",
+            "div"
+          ]
+        },
+        "identifier": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "required": [
+              "system",
+              "value"
+            ],
+            "properties": {
+              "system": {
+                "type": "string",
+                "minLength": 1
+              },
+              "value": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "required": [
+              "family"
+            ],
+            "properties": {
+              "family": {
+                "type": "string",
+                "minLength": 1
+              },
+              "given": {
+                "type": "array",
+                "items": {
+                  "properties": {}
+                }
+              },
+              "prefix": {
+                "type": "array",
+                "items": {
+                  "properties": {}
+                }
+              }
+            }
+          }
+        },
+        "address": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "required": [
+              "use",
+              "city",
+              "state",
+              "postalCode"
+            ],
+            "properties": {
+              "use": {
+                "type": "string",
+                "minLength": 1
+              },
+              "line": {
+                "type": "array",
+                "items": {
+                  "properties": {}
+                }
+              },
+              "city": {
+                "type": "string",
+                "minLength": 1
+              },
+              "state": {
+                "type": "string",
+                "minLength": 1
+              },
+              "postalCode": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "qualification": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "properties": {
+              "identifier": {
+                "type": "array",
+                "uniqueItems": true,
+                "minItems": 1,
+                "items": {
+                  "required": [
+                    "system",
+                    "value"
+                  ],
+                  "properties": {
+                    "system": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "value": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              },
+              "code": {
+                "type": "object",
+                "properties": {
+                  "coding": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "minItems": 1,
+                    "items": {
+                      "required": [
+                        "system",
+                        "code",
+                        "display"
+                      ],
+                      "properties": {
+                        "system": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "code": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "display": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      }
+                    }
+                  },
+                  "text": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "coding",
+                  "text"
+                ]
+              },
+              "period": {
+                "type": "object",
+                "properties": {
+                  "start": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "start"
+                ]
+              },
+              "issuer": {
+                "type": "object",
+                "properties": {
+                  "display": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "display"
+                ]
+              }
+            }
+          }
+        },
+        "meta": {
+          "type": "object",
+          "properties": {
+            "tag": {
+              "type": "array",
+              "uniqueItems": true,
+              "minItems": 1,
+              "items": {
+                "required": [
+                  "system",
+                  "code",
+                  "display"
+                ],
+                "properties": {
+                  "system": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "code": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "display": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            }
+          },
+          "required": [
+            "tag"
+          ]
+        }
+      },
+      "required": [
+        "resourceType",
+        "id",
+        "text",
+        "identifier",
+        "active",
+        "name",
+        "address",
+        "qualification",
+        "meta"
+      ]
+    },
+    "PractitionerRole": {
+      "description": "",
+      "type": "object",
+      "properties": {
+        "resourceType": {
+          "type": "string",
+          "minLength": 1
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "text": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string",
+              "minLength": 1
+            },
+            "div": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "status",
+            "div"
+          ]
+        },
+        "identifier": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "required": [
+              "system",
+              "value"
+            ],
+            "properties": {
+              "system": {
+                "type": "string",
+                "minLength": 1
+              },
+              "value": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "active": {
+          "type": "boolean"
+        },
+        "period": {
+          "type": "object",
+          "properties": {
+            "start": {
+              "type": "string",
+              "minLength": 1
+            },
+            "end": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "start",
+            "end"
+          ]
+        },
+        "practitioner": {
+          "type": "object",
+          "properties": {
+            "reference": {
+              "type": "string",
+              "minLength": 1
+            },
+            "display": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "reference",
+            "display"
+          ]
+        },
+        "organization": {
+          "type": "object",
+          "properties": {
+            "reference": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "reference"
+          ]
+        },
+        "code": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "properties": {
+              "coding": {
+                "type": "array",
+                "uniqueItems": true,
+                "minItems": 1,
+                "items": {
+                  "required": [
+                    "system",
+                    "code"
+                  ],
+                  "properties": {
+                    "system": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "code": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "specialty": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "properties": {
+              "coding": {
+                "type": "array",
+                "uniqueItems": true,
+                "minItems": 1,
+                "items": {
+                  "required": [
+                    "system",
+                    "code",
+                    "display"
+                  ],
+                  "properties": {
+                    "system": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "code": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "display": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "location": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "required": [
+              "reference",
+              "display"
+            ],
+            "properties": {
+              "reference": {
+                "type": "string",
+                "minLength": 1
+              },
+              "display": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "healthcareService": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "required": [
+              "reference"
+            ],
+            "properties": {
+              "reference": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "telecom": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "required": [
+              "system",
+              "value",
+              "use"
+            ],
+            "properties": {
+              "system": {
+                "type": "string",
+                "minLength": 1
+              },
+              "value": {
+                "type": "string",
+                "minLength": 1
+              },
+              "use": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "availableTime": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "required": [
+              "availableStartTime",
+              "availableEndTime"
+            ],
+            "properties": {
+              "daysOfWeek": {
+                "type": "array",
+                "items": {
+                  "properties": {}
+                }
+              },
+              "availableStartTime": {
+                "type": "string",
+                "minLength": 1
+              },
+              "availableEndTime": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "notAvailable": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "required": [
+              "description"
+            ],
+            "properties": {
+              "description": {
+                "type": "string",
+                "minLength": 1
+              },
+              "during": {
+                "type": "object",
+                "properties": {
+                  "start": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "end": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "start",
+                  "end"
+                ]
+              }
+            }
+          }
+        },
+        "availabilityExceptions": {
+          "type": "string",
+          "minLength": 1
+        },
+        "endpoint": {
+          "type": "array",
+          "uniqueItems": true,
+          "minItems": 1,
+          "items": {
+            "required": [
+              "reference"
+            ],
+            "properties": {
+              "reference": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "meta": {
+          "type": "object",
+          "properties": {
+            "tag": {
+              "type": "array",
+              "uniqueItems": true,
+              "minItems": 1,
+              "items": {
+                "required": [
+                  "system",
+                  "code",
+                  "display"
+                ],
+                "properties": {
+                  "system": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "code": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "display": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              }
+            }
+          },
+          "required": [
+            "tag"
+          ]
+        }
+      },
+      "required": [
+        "resourceType",
+        "id",
+        "text",
+        "identifier",
+        "active",
+        "period",
+        "practitioner",
+        "organization",
+        "code",
+        "specialty",
+        "location",
+        "healthcareService",
+        "telecom",
+        "availableTime",
+        "notAvailable",
+        "availabilityExceptions",
+        "endpoint",
+        "meta"
+      ]
+    }
   },
   "paths": {
     "/DocumentReference": {
@@ -861,170 +1640,6 @@
           "DocumentReference"
         ],
         "parameters": [
-          {
-            "name": "_language",
-            "type": "string",
-            "in": "query",
-            "description": "The language of the resource"
-          },
-          {
-            "name": "date",
-            "type": "string",
-            "in": "query",
-            "description": "When this document reference was created",
-            "format": "date"
-          },
-          {
-            "name": "subject",
-            "type": "string",
-            "in": "query",
-            "description": "Who/what is the subject of the document"
-          },
-          {
-            "name": "description",
-            "type": "string",
-            "in": "query",
-            "description": "Human-readable description"
-          },
-          {
-            "name": "language",
-            "type": "string",
-            "in": "query",
-            "description": "Human language of the content (BCP-47)"
-          },
-          {
-            "name": "type",
-            "type": "string",
-            "in": "query",
-            "description": "Kind of document (LOINC if possible)"
-          },
-          {
-            "name": "relation",
-            "type": "string",
-            "in": "query",
-            "description": "replaces | transforms | signs | appends"
-          },
-          {
-            "name": "setting",
-            "type": "string",
-            "in": "query",
-            "description": "Additional details about where the content was created (e.g. clinical specialty)"
-          },
-          {
-            "name": "related",
-            "type": "string",
-            "in": "query",
-            "description": "Related identifiers or resources"
-          },
-          {
-            "name": "patient",
-            "type": "string",
-            "in": "query",
-            "description": "Who/what is the subject of the document"
-          },
-          {
-            "name": "event",
-            "type": "string",
-            "in": "query",
-            "description": "Main clinical acts documented"
-          },
-          {
-            "name": "relationship",
-            "type": "string",
-            "in": "query",
-            "description": "Combination of relation and relatesTo"
-          },
-          {
-            "name": "authenticator",
-            "type": "string",
-            "in": "query",
-            "description": "Who/what authenticated the document"
-          },
-          {
-            "name": "identifier",
-            "type": "string",
-            "in": "query",
-            "description": "Master Version Specific Identifier"
-          },
-          {
-            "name": "period",
-            "type": "string",
-            "in": "query",
-            "description": "Time of service that is being documented",
-            "format": "date"
-          },
-          {
-            "name": "custodian",
-            "type": "string",
-            "in": "query",
-            "description": "Organization which maintains the document"
-          },
-          {
-            "name": "author",
-            "type": "string",
-            "in": "query",
-            "description": "Who and/or what authored the document"
-          },
-          {
-            "name": "format",
-            "type": "string",
-            "in": "query",
-            "description": "Format/content rules for the document"
-          },
-          {
-            "name": "encounter",
-            "type": "string",
-            "in": "query",
-            "description": "Context of the document  content"
-          },
-          {
-            "name": "contenttype",
-            "type": "string",
-            "in": "query",
-            "description": "Mime type of the content, with charset etc."
-          },
-          {
-            "name": "security-label",
-            "type": "string",
-            "in": "query",
-            "description": "Document security-tags"
-          },
-          {
-            "name": "location",
-            "type": "string",
-            "in": "query",
-            "description": "Uri where the data can be found"
-          },
-          {
-            "name": "_id",
-            "type": "string",
-            "in": "query",
-            "description": "The ID of the resource"
-          },
-          {
-            "name": "category",
-            "type": "string",
-            "in": "query",
-            "description": "Categorization of document"
-          },
-          {
-            "name": "relatesto",
-            "type": "string",
-            "in": "query",
-            "description": "Target of the relationship"
-          },
-          {
-            "name": "facility",
-            "type": "string",
-            "in": "query",
-            "description": "Kind of facility where patient was seen"
-          },
-          {
-            "name": "status",
-            "type": "string",
-            "in": "query",
-            "description": "current | superseded | entered-in-error"
-          },
           {
             "name": "_format",
             "in": "query",
@@ -1098,287 +1713,72 @@
             "description": "Erro inesperado na operação."
           }
         }
-      },
-      "delete": {
+      }
+    },
+    "/Organization": {
+      "get": {
         "tags": [
-          "DocumentReference"
+          "Organization"
+        ],
+        "parameters": [
+          {
+            "name": "_format",
+            "in": "query",
+            "type": "string",
+            "x-consoleDefault": "application/json"
+          }
+        ],
+        "description": "Pesquisa os dados de um Organization conforme os parâmetros de pesquisa.",
+        "responses": {
+          "200": {
+            "description": "Retorna os dados de um Organization conforme os parâmetros de pesquisa.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Organization"
+              }
+            }
+          },
+          "404": {
+            "description": "Nenhum Organizationencontrado."
+          }
+        }
+      }
+    },
+    "/Organization/{id}": {
+      "parameters": [
+        {
+          "in": "path",
+          "required": true,
+          "name": "id",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "Organization"
         ],
         "parameters": [],
-        "description": "TODOdelete",
+        "description": "Recupera os dados de um Organization a partir do identificador.",
         "responses": {
           "200": {
-            "description": "Operação realizada com sucesso."
-          }
-        }
-      }
-    },
-    "/DocumentReference/{id}/_history": {
-      "get": {
-        "tags": [
-          "DocumentReference"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "_count",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "_since",
-            "in": "query",
-            "type": "string"
-          }
-        ],
-        "description": "TODOhistory-instance",
-        "responses": {
-          "200": {
-            "description": "Operação realizada com sucesso."
-          }
-        }
-      }
-    },
-    "/DocumentReference/_history": {
-      "get": {
-        "tags": [
-          "DocumentReference"
-        ],
-        "parameters": [
-          {
-            "name": "_count",
-            "in": "query",
-            "type": "string"
-          },
-          {
-            "name": "_since",
-            "in": "query",
-            "type": "string"
-          }
-        ],
-        "description": "TODOhistory-type",
-        "responses": {
-          "200": {
-            "description": "Operação realizada com sucesso."
-          }
-        }
-      }
-    },
-    "/DocumentReference/{id}/_history/{vid}": {
-      "get": {
-        "tags": [
-          "DocumentReference"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "vid",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
-        ],
-        "description": "TODOundefined",
-        "responses": {
-          "200": {
-            "description": "Operação realizada com sucesso.",
+            "description": "Retorna os dados de um Organization a partir do identificador.",
             "schema": {
-              "$ref": "#/definitions/DocumentReference"
+              "$ref": "#/definitions/Organization"
             }
+          },
+          "404": {
+            "description": "Nenhum Organization encontrado."
           }
         }
       }
     },
     "/Patient": {
-      "post": {
-        "tags": [
-          "Patient"
-        ],
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "$ref": "#/definitions/Patient"
-            }
-          }
-        ],
-        "description": "Insere um novo Patient",
-        "responses": {
-          "201": {
-            "description": "Patient criado com sucesso."
-          },
-          "500": {
-            "description": "Erro inesperado na operação."
-          }
-        }
-      },
       "get": {
         "tags": [
           "Patient"
         ],
         "parameters": [
-          {
-            "name": "_language",
-            "type": "string",
-            "in": "query",
-            "description": "The language of the resource"
-          },
-          {
-            "name": "birthdate",
-            "type": "string",
-            "in": "query",
-            "description": "The patient's date of birth",
-            "format": "date"
-          },
-          {
-            "name": "deceased",
-            "type": "string",
-            "in": "query",
-            "description": "This patient has been marked as deceased, or as a death date entered"
-          },
-          {
-            "name": "address-state",
-            "type": "string",
-            "in": "query",
-            "description": "A state specified in an address"
-          },
-          {
-            "name": "gender",
-            "type": "string",
-            "in": "query",
-            "description": "Gender of the patient"
-          },
-          {
-            "name": "link",
-            "type": "string",
-            "in": "query",
-            "description": "All patients linked to the given patient"
-          },
-          {
-            "name": "language",
-            "type": "string",
-            "in": "query",
-            "description": "Language code (irrespective of use value)"
-          },
-          {
-            "name": "address-country",
-            "type": "string",
-            "in": "query",
-            "description": "A country specified in an address"
-          },
-          {
-            "name": "death-date",
-            "type": "string",
-            "in": "query",
-            "description": "The date of death has been provided and satisfies this search value",
-            "format": "date"
-          },
-          {
-            "name": "phonetic",
-            "type": "string",
-            "in": "query",
-            "description": "A portion of either family or given name using some kind of phonetic matching algorithm"
-          },
-          {
-            "name": "telecom",
-            "type": "string",
-            "in": "query",
-            "description": "The value in any kind of telecom details of the patient"
-          },
-          {
-            "name": "address-city",
-            "type": "string",
-            "in": "query",
-            "description": "A city specified in an address"
-          },
-          {
-            "name": "email",
-            "type": "string",
-            "in": "query",
-            "description": "A value in an email contact"
-          },
-          {
-            "name": "given",
-            "type": "string",
-            "in": "query",
-            "description": "A portion of the given name of the patient"
-          },
-          {
-            "name": "identifier",
-            "type": "string",
-            "in": "query",
-            "description": "A patient identifier"
-          },
-          {
-            "name": "address",
-            "type": "string",
-            "in": "query",
-            "description": "A server defined search that may match any of the string fields in the Address, including line, city, district, state, country, postalCode, and/or text"
-          },
-          {
-            "name": "general-practitioner",
-            "type": "string",
-            "in": "query",
-            "description": "Patient's nominated general practitioner, not the organization that manages the record"
-          },
-          {
-            "name": "active",
-            "type": "string",
-            "in": "query",
-            "description": "Whether the patient record is active"
-          },
-          {
-            "name": "address-postalcode",
-            "type": "string",
-            "in": "query",
-            "description": "A postalCode specified in an address"
-          },
-          {
-            "name": "phone",
-            "type": "string",
-            "in": "query",
-            "description": "A value in a phone contact"
-          },
-          {
-            "name": "organization",
-            "type": "string",
-            "in": "query",
-            "description": "The organization that is the custodian of the patient record"
-          },
-          {
-            "name": "address-use",
-            "type": "string",
-            "in": "query",
-            "description": "A use code specified in an address"
-          },
-          {
-            "name": "name",
-            "type": "string",
-            "in": "query",
-            "description": "A server defined search that may match any of the string fields in the HumanName, including family, give, prefix, suffix, suffix, and/or text"
-          },
-          {
-            "name": "_id",
-            "type": "string",
-            "in": "query",
-            "description": "The ID of the resource"
-          },
-          {
-            "name": "family",
-            "type": "string",
-            "in": "query",
-            "description": "A portion of the family name of the patient"
-          },
           {
             "name": "_format",
             "in": "query",
@@ -1429,71 +1829,134 @@
             "description": "Nenhum Patient encontrado."
           }
         }
-      },
-      "put": {
+      }
+    },
+    "/Practitioner": {
+      "get": {
         "tags": [
-          "Patient"
+          "Practitioner"
         ],
         "parameters": [
           {
-            "in": "body",
-            "name": "body",
-            "schema": {
-              "$ref": "#/definitions/Patient"
-            }
+            "name": "_format",
+            "in": "query",
+            "type": "string",
+            "x-consoleDefault": "application/json"
           }
         ],
-        "description": "Atualiza os dados de um Patient",
+        "description": "Pesquisa os dados de um Practitioner conforme os parâmetros de pesquisa.",
         "responses": {
-          "204": {
-            "description": "Patient alterado com sucesso."
+          "200": {
+            "description": "Retorna os dados de um Practitioner conforme os parâmetros de pesquisa.",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Practitioner"
+              }
+            }
           },
-          "500": {
-            "description": "Erro inesperado na operação."
+          "404": {
+            "description": "Nenhum Practitionerencontrado."
           }
         }
       }
     },
-    "/Patient/{id}/_history/{vid}": {
+    "/Practitioner/{id}": {
+      "parameters": [
+        {
+          "in": "path",
+          "required": true,
+          "name": "id",
+          "type": "string"
+        }
+      ],
       "get": {
         "tags": [
-          "Patient"
+          "Practitioner"
+        ],
+        "parameters": [],
+        "description": "Recupera os dados de um Practitioner a partir do identificador.",
+        "responses": {
+          "200": {
+            "description": "Retorna os dados de um Practitioner a partir do identificador.",
+            "schema": {
+              "$ref": "#/definitions/Practitioner"
+            }
+          },
+          "404": {
+            "description": "Nenhum Practitioner encontrado."
+          }
+        }
+      }
+    },
+    "/PractitionerRole": {
+      "get": {
+        "tags": [
+          "PractitionerRole"
         ],
         "parameters": [
           {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "vid",
-            "in": "path",
-            "required": true,
-            "type": "string"
+            "name": "_format",
+            "in": "query",
+            "type": "string",
+            "x-consoleDefault": "application/json"
           }
         ],
-        "description": "TODOundefined",
+        "description": "Pesquisa os dados de um PractitionerRole conforme os parâmetros de pesquisa.",
         "responses": {
           "200": {
-            "description": "Operação realizada com sucesso.",
+            "description": "Retorna os dados de um PractitionerRole conforme os parâmetros de pesquisa.",
             "schema": {
-              "$ref": "#/definitions/Patient"
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/PractitionerRole"
+              }
             }
+          },
+          "404": {
+            "description": "Nenhum PractitionerRoleencontrado."
+          }
+        }
+      }
+    },
+    "/PractitionerRole/{id}": {
+      "parameters": [
+        {
+          "in": "path",
+          "required": true,
+          "name": "id",
+          "type": "string"
+        }
+      ],
+      "get": {
+        "tags": [
+          "PractitionerRole"
+        ],
+        "parameters": [],
+        "description": "Recupera os dados de um PractitionerRole a partir do identificador.",
+        "responses": {
+          "200": {
+            "description": "Retorna os dados de um PractitionerRole a partir do identificador.",
+            "schema": {
+              "$ref": "#/definitions/PractitionerRole"
+            }
+          },
+          "404": {
+            "description": "Nenhum PractitionerRole encontrado."
           }
         }
       }
     }
   },
   "info": {
-    "description": "Informações demográficas e clínicas sobre pacientes, documentos, organizações e profissionais de saúde.\n\n",
-    "title": "HAPI FHIR R4 Server",
+    "description": "Informações demográficas e clínicas sobre pacientes, documentos, organizações e profissionais de saúde.\r\n\r\n",
+    "title": "HAPI FHIR RNDS R4 Server",
     "version": "4.0.0"
   },
   "host": "localhost:8080",
   "schemes": [
     "http"
   ],
-  "basePath": "/hapi-fhir-jpaserver",
+  "basePath": "/hapi-fhir-rnds",
   "tags": []
 }
